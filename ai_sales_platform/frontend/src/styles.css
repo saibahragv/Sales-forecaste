@@ -1,0 +1,222 @@
+/* AI Sales Platform - Premium Vanilla CSS Design System */
+/* Overriding standard Tailwind configuration with custom variables and glassmorphism */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* HSL Colors: Deep, vibrant, and precise */
+  --color-base-h: 220;
+  --color-base-s: 30%;
+  
+  --bg-primary: hsl(var(--color-base-h), var(--color-base-s), 5%);
+  --bg-secondary: hsl(var(--color-base-h), 20%, 9%);
+  --bg-surface: hsl(var(--color-base-h), 15%, 12%);
+  --bg-glass: hsla(var(--color-base-h), 15%, 12%, 0.6);
+  
+  --fg-primary: hsl(0, 0%, 98%);
+  --fg-secondary: hsl(220, 15%, 70%);
+  --fg-muted: hsl(220, 10%, 50%);
+
+  --border-light: hsla(220, 20%, 30%, 0.3);
+  --border-glow: hsla(210, 100%, 70%, 0.5);
+
+  --accent-base: hsl(210, 100%, 60%);
+  --accent-hover: hsl(210, 100%, 70%);
+  --accent-glow: hsla(210, 100%, 60%, 0.4);
+
+  --risk-high: hsl(350, 80%, 60%);
+  --risk-med: hsl(40, 90%, 60%);
+  --risk-low: hsl(120, 70%, 50%);
+
+  /* Typography */
+  --font-sys: 'Inter', system-ui, sans-serif;
+  
+  /* Micro-interactions: Timing */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bouncy: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--fg-primary);
+  font-family: var(--font-sys);
+  overflow-x: hidden;
+  /* Premium radial gradient background */
+  background-image: radial-gradient(circle at 50% 0%, hsla(210, 40%, 15%, 0.5) 0%, transparent 60%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-base);
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-2px);
+}
+
+/* Glow effects and magnetic buttons */
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-surface);
+  color: var(--fg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all var(--transition-bouncy);
+}
+
+.btn-magnetic:hover {
+  background: var(--accent-base);
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: scale(1.05);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Cmd+K Palette specifics */
+.cmd-k-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+}
+
+.cmd-k-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cmd-k-modal {
+  width: 90%;
+  max-width: 600px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+  transition: transform var(--transition-bouncy);
+  overflow: hidden;
+}
+
+.cmd-k-overlay.active .cmd-k-modal {
+  transform: scale(1);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 hsla(350, 80%, 60%, 0.7); }
+  70% { box-shadow: 0 0 0 10px hsla(350, 80%, 60%, 0); }
+  100% { box-shadow: 0 0 0 0 hsla(350, 80%, 60%, 0); }
+}
+
+.risk-flag-high {
+  border-left: 4px solid var(--risk-high);
+  animation: pulseGlow 2s infinite;
+}
+
+/* Layout Utilities (replacing pure tailwind where advanced control is needed) */
+.split-pane {
+  display: flex;
+  height: 100%;
+}
+.split-pane-left {
+  flex: 0 0 280px;
+  border-right: 1px solid var(--border-light);
+}
+.split-pane-right {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+}
+
+/* 3D Hierarchy Topology Explorer Wrapper */
+.hierarchy-3d-wrap {
+  perspective: 1000px;
+  position: relative;
+  height: 400px;
+}
+.hierarchy-node {
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-smooth);
+}
+.hierarchy-node:hover {
+  transform: rotateY(15deg) rotateX(10deg) translateZ(20px);
+}
+
+/* Copilot Floating Widget */
+.copilot-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 350px;
+  max-height: 500px;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Skeletons */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-surface) 25%, var(--bg-secondary) 50%, var(--bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Utilities */
+.interactive-hover {
+  transition: all 0.2s ease-in-out;
+}
+.interactive-hover:hover {
+  cursor: pointer;
+  filter: brightness(1.2);
+}
