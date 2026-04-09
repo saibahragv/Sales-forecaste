@@ -78,7 +78,9 @@ export const useFiltersStore = create<FiltersState>()(
 
             const cur = get()
             if (data.stores.length && cur.store === undefined) set({ store: data.stores[0] })
-            if (!cur.anchorDate && data.max_date) set({ anchorDate: data.max_date })
+            if (!cur.anchorDate || cur.anchorDate.startsWith('2017') || cur.anchorDate.startsWith('2013')) {
+              set({ anchorDate: '2026-05-15' })
+            }
 
             return data
           })

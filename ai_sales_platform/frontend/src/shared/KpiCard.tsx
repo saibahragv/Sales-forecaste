@@ -22,7 +22,7 @@ export function KpiCard(props: { label: string; value: React.ReactNode; delta?: 
         </motion.div>
         {props.delta && <div className="text-xs font-semibold text-fg-secondary">{props.delta}</div>}
       </div>
-      {clickable && <div className="mt-3 text-[10px] text-accent-hover opacity-70 group-hover:opacity-100">Click for definition & matrix drill-down</div>}
+      {clickable && <div className="mt-3 text-[10px] text-accent-hover opacity-70 group-hover:opacity-100">Click to see what this means</div>}
     </button>
   )
 }

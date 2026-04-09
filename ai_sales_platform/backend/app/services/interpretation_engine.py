@@ -35,15 +35,14 @@ class InterpretationEngine:
                 action = "Investigate demand drivers and consider reducing replenishment to avoid overstock."
 
             return MetricExplanation(
-                title="Growth (30d)",
-                definition="Change in recent demand level versus the prior comparable window.",
-                calculation_logic="mean(sales last 30d) - mean(sales prior 30d), reported as % of prior mean.",
-                business_meaning="Indicates whether demand is expanding, stable, or contracting for the selected scope.",
-                current_interpretation=f"{band} growth ({v:.2f}%).",
+                title="Recent Growth",
+                definition="How much our sales have gone up or down in the last 30 days.",
+                calculation_logic="We compare your sales from the last 30 days to the 30 days before that.",
+                business_meaning="This tells us if people are buying more, less, or about the same amount of this item.",
+                current_interpretation=f"You have {band} growth right now ({v:.2f}%).",
                 reasoning=[
-                    f"window=30d",
-                    f"aggregation={ctx.aggregation or 'daily'}",
-                    "computed from observed history only (no retraining).",
+                    "Based on real recent sales data.",
+                    "Quickly spots short-term trends."
                 ],
                 suggested_action=action,
             )
@@ -51,40 +50,40 @@ class InterpretationEngine:
         if metric == "forecast_aggregation":
             agg = extras.get("aggregation") or ctx.aggregation or "daily"
             meaning = {
-                "daily": "Daily totals preserve short-term volatility and are useful for operational monitoring.",
-                "weekly": "Weekly totals reduce noise and align to replenishment cadences.",
-                "monthly": "Monthly totals are best for long-range planning and budgeting; they smooth short-term effects.",
-            }.get(str(agg), "Aggregation level.")
+                "daily": "Daily numbers show every tiny detail and bump.",
+                "weekly": "Weekly totals smooth things out and make it easier to see the main pattern.",
+                "monthly": "Monthly sums are best for 'big picture' long-term planning.",
+            }.get(str(agg), "How we group the data.")
             return MetricExplanation(
-                title="Aggregation",
-                definition="Resampling level used for displayed history and forecast time series.",
-                calculation_logic="Aggregate sales totals by day, week (week-ending), or month (month-ending).",
+                title="Data Grouping",
+                definition="How we bundle the data together (by day, week, or month).",
+                calculation_logic="Adding up daily sales to make weekly or monthly totals.",
                 business_meaning=meaning,
-                current_interpretation=f"Current view: {agg}.",
-                reasoning=["Aggregation changes visualization granularity only; model forecasts are generated daily then resampled."],
+                current_interpretation=f"We are looking at it {agg}.",
+                reasoning=["Grouping just changes how the chart looks, it doesn't change the underlying AI predictions."],
                 suggested_action="Use weekly/monthly for planning decisions; use daily for anomaly monitoring." if agg != "daily" else "Use weekly to reduce noise when comparing stores/items.",
             )
 
         if metric == "forecast_normalization":
             norm = bool(extras.get("normalized", ctx.normalized or False))
             return MetricExplanation(
-                title="Normalization",
-                definition="Indexing of series to a common baseline for comparability.",
-                calculation_logic="Divide values by mean(history window) and scale to 100.",
-                business_meaning="Enables cross-store and cross-item comparisons without scale dominating the chart.",
-                current_interpretation="Normalized to index=100." if norm else "Raw units (not normalized).",
-                reasoning=["Normalization changes chart scale only; it does not alter model predictions."],
+                title="Scale Matching (Normalization)",
+                definition="Making different items easy to compare on the same graph.",
+                calculation_logic="We shrink or stretch the numbers so everything fits on a percentage scale (0 to 100).",
+                business_meaning="If one item sells 1,000 and another sells 10, scale matching lets you clearly see if they share the same seasonal patterns.",
+                current_interpretation="Scale matching is ON." if norm else "Viewing raw sales numbers.",
+                reasoning=["This only changes the chart so your eyes can compare shapes easier!"],
                 suggested_action="Enable normalization when comparing multiple stores/items." if not norm else None,
             )
 
         if metric == "forecast_decomposition":
             return MetricExplanation(
-                title="Forecast Decomposition",
-                definition="Deterministic decomposition of observed history into trend, seasonal, and residual components.",
-                calculation_logic="Trend = EMA(30). Seasonal = average weekday effect on detrended series. Residual = remainder.",
-                business_meaning="Separates structural demand movement (trend) from repeatable patterns (seasonality) and noise (residual).",
-                current_interpretation="Use the residual component to spot instability or regime shifts; stable series have low residual dispersion.",
-                reasoning=["Decomposition is deterministic and derived from history; it is not an additional model."],
+                title="Pattern Breakdown",
+                definition="Taking the messy sales line and breaking it into three simple parts: Trend, Season, and Random Noise.",
+                calculation_logic="We find the main direction (Trend), find the repeating weekly humps (Season), and whatever is leftover is Random (Noise).",
+                business_meaning="This helps you see if sales are actually growing, or if it's just typical weekend traffic.",
+                current_interpretation="Look at the 'Noise' component—if the noise line is very bumpy, it means the item is hard to predict.",
+                reasoning=["This helps humans understand the shape of the data before the AI tries to predict it."],
                 suggested_action="If residuals are large, consult Risk & Stability and consider weekly aggregation for planning.",
             )
 
@@ -100,12 +99,12 @@ class InterpretationEngine:
                 action = "Use weekly/monthly aggregation for planning and keep wider inventory buffers or shorter review cycles."
 
             return MetricExplanation(
-                title="Volatility", 
-                definition="Normalized variability of recent demand changes.",
-                calculation_logic="std(diff(sales)) / mean(sales) computed on trailing window.",
-                business_meaning="Higher volatility implies less predictable demand and higher forecast uncertainty.",
-                current_interpretation=f"{band} volatility (score={v:.3f}).",
-                reasoning=["volatility is scale-normalized to compare across items/stores"],
+                title="Bumpiness (Volatility)", 
+                definition="How crazy and unpredictable the sales jumps are from day to day.",
+                calculation_logic="We measure how far individual days jump away from the average.",
+                business_meaning="High bumpiness means sales are bouncing all over the place, making it harder for the AI to guess perfectly.",
+                current_interpretation=f"The sales are showing {band} bumpiness.",
+                reasoning=["Tells us if we need to be careful with our trust in the exact numbers."],
                 suggested_action=action,
             )
 
@@ -116,12 +115,12 @@ class InterpretationEngine:
                 action = "Investigate anomalies and consider scenario stress tests; use conservative buffers."
 
             return MetricExplanation(
-                title="Stability Index",
-                definition="Bounded inverse-volatility score summarizing predictability.",
-                calculation_logic="1 / (1 + 10 * volatility_score).",
-                business_meaning="Higher stability indicates demand is easier to forecast operationally.",
-                current_interpretation=f"{band} stability (index={v:.3f}).",
-                reasoning=["bounded to [0,1] for consistent operational thresholds"],
+                title="Steadiness Score",
+                definition="A score showing how steady, reliable, and boring the sales pattern is.",
+                calculation_logic="We give a high score if there are very few random surprises.",
+                business_meaning="High steadiness is great! It means we can easily and safely predict what will happen next.",
+                current_interpretation=f"This looks {band}.",
+                reasoning=["Steady items require less human supervision."],
                 suggested_action=action,
             )
 
@@ -129,36 +128,36 @@ class InterpretationEngine:
             band = "low" if v < 0.4 else "medium" if v < 0.6 else "high"
             action = "If risk is high, prioritize monitoring and avoid aggressive inventory commitments." if band == "high" else None
             return MetricExplanation(
-                title="Risk Score",
-                definition="Operational risk proxy derived from stability and anomaly signals.",
-                calculation_logic="risk_score = 1 - stability_index (bounded).",
-                business_meaning="Higher risk suggests larger uncertainty envelope and higher chance of forecast error.",
-                current_interpretation=f"{band} risk (score={v:.3f}).",
-                reasoning=["deterministic transformation of stability; no probabilistic claims"],
+                title="Danger Level",
+                definition="The chance that we might run out of stock or have bad predictions.",
+                calculation_logic="Higher danger happens when sales are wild and unsteady.",
+                business_meaning="This helps you know when you need to keep extra items in the back room just in case.",
+                current_interpretation=f"This is a {band} danger situation.",
+                reasoning=["Helps humans know where to focus their attention today."],
                 suggested_action=action,
             )
 
         if metric == "forecast_delta_pct":
             band = "increase" if v > 0 else "decrease" if v < 0 else "flat"
             return MetricExplanation(
-                title="Forecast Delta",
-                definition="Change between forecast total and recent baseline total.",
-                calculation_logic="(forecast_total - baseline_total) / baseline_total.",
-                business_meaning="Quantifies expected near-term deviation from recent realized demand.",
-                current_interpretation=f"Projected {band} versus baseline ({v:.2f}%).",
-                reasoning=[f"horizon_days={ctx.horizon_days}", "baseline uses last horizon window of actuals"],
+                title="Future vs Past",
+                definition="The difference between what we expect to happen tomorrow versus what happened yesterday.",
+                calculation_logic="Future predictions minus recent real sales.",
+                business_meaning="Tells us if we are expecting a big change from normal.",
+                current_interpretation=f"We expect sales to {band} compared to the recent past.",
+                reasoning=["Shows the direction the AI thinks things are going."],
                 suggested_action="If delta is material, validate with scenario simulation and check drivers via SHAP." if abs(v) >= 5 else None,
             )
 
         if metric == "confidence_band_pct":
             band = "tight" if v <= 15 else "moderate" if v <= 30 else "wide"
             return MetricExplanation(
-                title="Forecast Uncertainty Band",
-                definition="Deterministic uncertainty envelope derived from trailing volatility.",
-                calculation_logic="band_pct = min(60%, 10% + 2.5 * volatility_score).",
-                business_meaning="Wider bands imply forecasts should be treated as higher-risk for commitments.",
-                current_interpretation=f"{band} uncertainty (±{v:.1f}%).",
-                reasoning=["This is a heuristic risk envelope, not a statistical confidence interval."],
+                title="Wiggle Room (Confidence)",
+                definition="Our 'margin of error' for the prediction.",
+                calculation_logic="We use past bumpiness to guess how bumpy the future will be, creating a safe range.",
+                business_meaning="Wide bands mean we aren't completely sure. Tight bands mean we are very confident.",
+                current_interpretation=f"We have a {band} range of confidence.",
+                reasoning=["It's always smart to have a backup plan!"],
                 suggested_action="Use aggregation and scenario stress tests; avoid tight commitments at wide uncertainty." if band == "wide" else None,
             )
 

@@ -23,10 +23,9 @@ export function ExplanationDrawer(props: {
         <DialogPanel className="h-full w-full max-w-lg overflow-auto border-l border-slate-800 bg-panel-950 shadow-panel">
           <div className="flex items-start justify-between border-b border-slate-800 px-4 py-3">
             <div>
-              <DialogTitle as="div" className="text-sm font-medium text-slate-200">
+              <DialogTitle as="div" className="text-xl font-bold glow-text">
                 {props.explanation?.title ?? 'Metric explanation'}
               </DialogTitle>
-              <div className="mt-1 text-xs text-slate-500">{props.metricKey ? `key: ${props.metricKey}` : ''}</div>
             </div>
             <button className="rounded-md px-2 py-1 text-xs text-slate-300 hover:bg-slate-900" onClick={props.onClose}>
               Close
@@ -37,41 +36,25 @@ export function ExplanationDrawer(props: {
             <div className="p-4 text-sm text-slate-400">No explanation available for this metric.</div>
           ) : (
             <div className="p-4 space-y-4">
-              <section className="rounded-lg border border-slate-800 bg-slate-950 p-3">
-                <div className="text-xs font-medium text-slate-300">Definition</div>
-                <div className="mt-1 text-sm text-slate-200">{props.explanation.definition}</div>
+              <section className="glass-panel p-4">
+                <div className="text-xs font-bold text-fg-muted uppercase tracking-wider">What is this?</div>
+                <div className="mt-2 text-sm text-fg-primary leading-relaxed">{props.explanation.definition}</div>
               </section>
 
-              <section className="rounded-lg border border-slate-800 bg-slate-950 p-3">
-                <div className="text-xs font-medium text-slate-300">Calculation logic</div>
-                <div className="mt-1 text-sm text-slate-200">{props.explanation.calculation_logic}</div>
+              <section className="glass-panel p-4 border-l-4 border-accent-base pl-3">
+                <div className="text-xs font-bold text-fg-muted uppercase tracking-wider">What this means for the business</div>
+                <div className="mt-2 text-sm text-white font-medium leading-relaxed">{props.explanation.business_meaning}</div>
               </section>
 
-              <section className="rounded-lg border border-slate-800 bg-slate-950 p-3">
-                <div className="text-xs font-medium text-slate-300">Business meaning</div>
-                <div className="mt-1 text-sm text-slate-200">{props.explanation.business_meaning}</div>
-              </section>
-
-              <section className="rounded-lg border border-slate-800 bg-slate-950 p-3">
-                <div className="text-xs font-medium text-slate-300">Current interpretation</div>
-                <div className="mt-1 text-sm text-slate-200">{props.explanation.current_interpretation}</div>
-              </section>
-
-              <section className="rounded-lg border border-slate-800 bg-slate-950 p-3">
-                <div className="text-xs font-medium text-slate-300">Reasoning</div>
-                <div className="mt-2 space-y-1">
-                  {props.explanation.reasoning.map((r) => (
-                    <div key={r} className="text-sm text-slate-200">
-                      {r}
-                    </div>
-                  ))}
-                </div>
+              <section className="glass-panel p-4 bg-bg-surface">
+                <div className="text-xs font-bold text-fg-muted uppercase tracking-wider">Current Status</div>
+                <div className="mt-2 text-lg text-white font-semibold glow-text">{props.explanation.current_interpretation}</div>
               </section>
 
               {props.explanation.suggested_action && (
-                <section className="rounded-lg border border-slate-800 bg-slate-950 p-3">
-                  <div className="text-xs font-medium text-slate-300">Suggested action</div>
-                  <div className="mt-1 text-sm text-slate-200">{props.explanation.suggested_action}</div>
+                <section className="glass-panel p-4 border border-risk-medium border-opacity-30">
+                  <div className="text-xs font-bold text-risk-medium uppercase tracking-wider">Suggested action</div>
+                  <div className="mt-2 text-sm text-white">{props.explanation.suggested_action}</div>
                 </section>
               )}
             </div>

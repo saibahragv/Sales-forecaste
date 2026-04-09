@@ -11,6 +11,10 @@ from app.api.routes.risk import router as risk_router
 from app.api.routes.scenario import router as scenario_router
 from app.api.routes.shap_routes import router as shap_router
 from app.api.routes.stream import router as stream_router
+from app.api.routes.agent import router as agent_router
+from app.api.routes.inventory import router as inventory_router
+from app.api.routes.accuracy import router as accuracy_router
+from app.api.routes.export import router as export_router
 
 
 api_router = APIRouter()
@@ -26,3 +30,7 @@ api_router.include_router(governance_alias_router, tags=["governance"])
 api_router.include_router(features_router, tags=["features"])
 api_router.include_router(assistant_router, tags=["assistant"])
 api_router.include_router(stream_router, tags=["stream"])
+api_router.include_router(agent_router, tags=["agent"])
+api_router.include_router(inventory_router, tags=["inventory"])
+api_router.include_router(accuracy_router, tags=["accuracy"])
+api_router.include_router(export_router, tags=["export"])

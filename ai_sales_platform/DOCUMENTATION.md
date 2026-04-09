@@ -80,9 +80,19 @@ This bar controls the "Scope" of what you are looking at.
 - **Global Importance**: Shows which factors generally matter most for this product (e.g., "Price matters more than Seasonality").
 - **Local Explanation**: Click a specific day in the future to see exactly why that specific number was predicted.
 
-### 6️⃣ AI Assistant (`/assistant`)
-**Purpose**: Natural Language interaction.
-- **Chat Interface**: You can ask questions like "Why is the risk high for Store 1?" or "Explain the forecast for next week." The system uses its internal data to give you a detailed answer.
+### 6️⃣ AI Assistant: ARIA v2.0.2 (`/assistant`)
+**Purpose**: Natural Language interaction & Strategic Advisory.
+- **Cognitive Core**: Powered by LLaMA 3.1 70B via NVIDIA NIM.
+- **Neural Interceptor**: A high-speed bypass layer that handles conversational greetings (hi, hello, yo) locally in <10ms to conserve API bandwidth.
+- **Core Memory Agent**: ARIA continuously learns your business preferences and "remembers" them in `aria_memory_log.json`.
+- **Think-Act-Respond Loop**: A strict reasoning process where ARIA "thinks" about your intent, "acts" by calling tools (like Forecast or Risk), and "responds" with bulleted executive summaries.
+- **Entity Resolution**: ARIA can translate natural names (like "Midtown Store") into numerical IDs automatically.
+
+### 7️⃣ Intelligence Matrix Array (`/hierarchy`)
+**Purpose**: High-density operational overview.
+- **Store Terminal Cards**: 50 individual "Glassmorphic" cards showing real-time risk status bands.
+- **Velocity Index**: 7-day trailing sparklines in every card for instant movement detection.
+- **Neural Action Bar**: Hover over any card to reveal a "Neural Analysis" button that instantly triggers ARIA to provide a briefing for that specific node.
 
 ## 🛠️ Technology Stack: The Libraries We Use
 
@@ -109,6 +119,12 @@ The platform is built on a modern AI stack. Each library has a specific role in 
 - **FastAPI**: 
     - **Role**: Web framework.
     - **Usage**: High-performance, asynchronous framework used to serve the AI predictions to the frontend.
+- **NVIDIA NIM (LLaMA 3.1 70B)**:
+    - **Role**: Agent Cognitive Core.
+    - **Usage**: Powers ARIA's natural language reasoning, tool-calling, and executive strategy summaries.
+- **Exponential Backoff Engine**:
+    - **Role**: API Resilience.
+    - **Usage**: Automatically handles 429 rate limits by retrying requests with increasing delays, ensuring zero-interruption service.
 - **Uvicorn**: 
     - **Role**: ASGI Server.
     - **Usage**: The lightning-fast server that runs the FastAPI application.

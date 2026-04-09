@@ -7,37 +7,31 @@ module.exports = {
         sans: ['ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial'],
       },
       colors: {
-        app: {
-          bg: 'hsl(var(--app-bg))',
-          fg: 'hsl(var(--app-fg))',
-          muted: 'hsl(var(--app-muted))',
-          subtle: 'hsl(var(--app-subtle))',
+        bg: {
+          primary: 'var(--bg-primary)',
+          secondary: 'var(--bg-secondary)',
+          surface: 'var(--bg-surface)',
+          glass: 'var(--bg-glass)',
         },
-        surface: {
-          1: 'hsl(var(--surface-1))',
-          2: 'hsl(var(--surface-2))',
-          3: 'hsl(var(--surface-3))',
+        fg: {
+          primary: 'var(--fg-primary)',
+          secondary: 'var(--fg-secondary)',
+          muted: 'var(--fg-muted)',
         },
         border: {
-          DEFAULT: 'hsl(var(--border))',
-          subtle: 'hsl(var(--border-subtle))',
+          DEFAULT: 'var(--border-light)',
+          light: 'var(--border-light)',
+          glow: 'var(--border-glow)',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          fg: 'hsl(var(--accent-fg))',
-          subtle: 'hsl(var(--accent-subtle))',
+          base: 'var(--accent-base)',
+          hover: 'var(--accent-hover)',
+          glow: 'var(--accent-glow)',
         },
-        success: {
-          DEFAULT: 'hsl(var(--success))',
-          subtle: 'hsl(var(--success-subtle))',
-        },
-        warning: {
-          DEFAULT: 'hsl(var(--warning))',
-          subtle: 'hsl(var(--warning-subtle))',
-        },
-        danger: {
-          DEFAULT: 'hsl(var(--danger))',
-          subtle: 'hsl(var(--danger-subtle))',
+        risk: {
+          high: 'var(--risk-high)',
+          med: 'var(--risk-med)',
+          low: 'var(--risk-low)',
         },
       },
       borderRadius: {

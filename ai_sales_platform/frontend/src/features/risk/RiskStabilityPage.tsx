@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from '../../core/api'
 import { useFiltersStore } from '../../store/filters'
-import { GlobalFilters } from '../../shared/GlobalFilters'
+import { usePageContext } from '../../store/pageContext'
 import { Panel } from '../../shared/Panel'
 import { KpiCard } from '../../shared/KpiCard'
 import { Skeleton } from '../../shared/Skeleton'
@@ -21,6 +21,7 @@ type RiskResponse = {
 
 export function RiskStabilityPage() {
   const { store, item, horizonDays } = useFiltersStore()
+  const { updatePageData } = usePageContext()
   const [resp, setResp] = useState<RiskResponse | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -39,7 +40,10 @@ export function RiskStabilityPage() {
     setError(null)
     api
       .get<RiskResponse>('/risk', { params: { store, item, horizon_days: horizonDays } })
-      .then((r) => setResp(r.data))
+      .then((r) => {
+        setResp(r.data)
+        updatePageData({ riskBand: riskClass, volatility: r.data.volatility_score.toFixed(3), anomalyFlag: r.data.anomaly_flag })
+      })
       .catch((e) => setError(e?.response?.data?.detail ?? e?.message ?? 'Risk failed'))
       .finally(() => setLoading(false))
   }, [store, item, horizonDays])
@@ -54,7 +58,6 @@ export function RiskStabilityPage() {
 
   return (
     <div className="space-y-6">
-      <GlobalFilters />
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         <KpiCard label="Volatility" value={resp ? resp.volatility_score.toFixed(3) : '—'} onClick={resp ? () => openExplain('volatility_score') : undefined} />

@@ -1,0 +1,674 @@
+[
+    {
+        "prompt": "hi",
+        "first_token": 2.519,
+        "total_time": 2.521,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "RADAR: What are the top risks?",
+        "first_token": 2.481,
+        "total_time": 2.483,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ORACLE: Forecast for Westside?",
+        "first_token": 2.532,
+        "total_time": 2.534,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "CHRONOS: 30% promo shock simulation",
+        "first_token": 2.514,
+        "total_time": 2.515,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "LOGISTICS: Inventory check for Midtown",
+        "first_token": 2.501,
+        "total_time": 2.502,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "EXPLAINER: What's driving Westside sales?",
+        "first_token": 2.523,
+        "total_time": 2.524,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "AUDITOR: How accurate is the Midtown model?",
+        "first_token": 2.518,
+        "total_time": 2.519,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "STABILIZER: Is Westside stable?",
+        "first_token": 2.567,
+        "total_time": 2.568,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "PROMOTER: Run a high intensity campaign",
+        "first_token": 2.539,
+        "total_time": 2.54,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ELASTICITY: Check price sensitivity",
+        "first_token": 2.847,
+        "total_time": 2.848,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "VOLATILITY: Check Midtown variance",
+        "first_token": 2.895,
+        "total_time": 2.897,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "MEMO: Remember that Westside is our priority",
+        "first_token": 2.838,
+        "total_time": 2.841,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "GEOGRAPHER: Details for Central Station",
+        "first_token": 2.928,
+        "total_time": 2.93,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ANOMALY: Any weird spikes today?",
+        "first_token": 2.578,
+        "total_time": 2.579,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "TREND: What is the long term growth?",
+        "first_token": 2.511,
+        "total_time": 2.513,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "SURVEYOR: Give me an executive briefing",
+        "first_token": 2.499,
+        "total_time": 2.502,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "hi",
+        "first_token": 2.675,
+        "total_time": 2.676,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "RADAR: What are the top risks?",
+        "first_token": 2.484,
+        "total_time": 2.485,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ORACLE: Forecast for Westside?",
+        "first_token": 2.495,
+        "total_time": 2.497,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "CHRONOS: 30% promo shock simulation",
+        "first_token": 2.56,
+        "total_time": 2.561,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "LOGISTICS: Inventory check for Midtown",
+        "first_token": 2.552,
+        "total_time": 2.554,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "EXPLAINER: What's driving Westside sales?",
+        "first_token": 2.517,
+        "total_time": 2.518,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "AUDITOR: How accurate is the Midtown model?",
+        "first_token": 2.966,
+        "total_time": 2.967,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "STABILIZER: Is Westside stable?",
+        "first_token": 2.51,
+        "total_time": 2.512,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "PROMOTER: Run a high intensity campaign",
+        "first_token": 2.561,
+        "total_time": 2.562,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ELASTICITY: Check price sensitivity",
+        "first_token": 2.553,
+        "total_time": 2.555,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "VOLATILITY: Check Midtown variance",
+        "first_token": 2.575,
+        "total_time": 2.577,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "MEMO: Remember that Westside is our priority",
+        "first_token": 2.545,
+        "total_time": 2.547,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "GEOGRAPHER: Details for Central Station",
+        "first_token": 2.55,
+        "total_time": 2.551,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ANOMALY: Any weird spikes today?",
+        "first_token": 2.553,
+        "total_time": 2.554,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "TREND: What is the long term growth?",
+        "first_token": 2.494,
+        "total_time": 2.495,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "SURVEYOR: Give me an executive briefing",
+        "first_token": 2.495,
+        "total_time": 2.496,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "hi",
+        "first_token": 2.615,
+        "total_time": 2.617,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "RADAR: What are the top risks?",
+        "first_token": 2.514,
+        "total_time": 2.516,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ORACLE: Forecast for Westside?",
+        "first_token": 2.56,
+        "total_time": 2.562,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "CHRONOS: 30% promo shock simulation",
+        "first_token": 2.571,
+        "total_time": 2.574,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "LOGISTICS: Inventory check for Midtown",
+        "first_token": 2.902,
+        "total_time": 2.904,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "EXPLAINER: What's driving Westside sales?",
+        "first_token": 3.044,
+        "total_time": 3.044,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "AUDITOR: How accurate is the Midtown model?",
+        "first_token": 2.596,
+        "total_time": 2.601,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "STABILIZER: Is Westside stable?",
+        "first_token": 2.632,
+        "total_time": 2.635,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "PROMOTER: Run a high intensity campaign",
+        "first_token": 2.537,
+        "total_time": 2.539,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ELASTICITY: Check price sensitivity",
+        "first_token": 2.574,
+        "total_time": 2.576,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "VOLATILITY: Check Midtown variance",
+        "first_token": 2.573,
+        "total_time": 2.574,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "MEMO: Remember that Westside is our priority",
+        "first_token": 2.631,
+        "total_time": 2.632,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "GEOGRAPHER: Details for Central Station",
+        "first_token": 2.531,
+        "total_time": 2.532,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ANOMALY: Any weird spikes today?",
+        "first_token": 2.51,
+        "total_time": 2.512,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "TREND: What is the long term growth?",
+        "first_token": 2.547,
+        "total_time": 2.548,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "SURVEYOR: Give me an executive briefing",
+        "first_token": 2.586,
+        "total_time": 2.588,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "hi",
+        "first_token": 2.526,
+        "total_time": 2.527,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "RADAR: What are the top risks?",
+        "first_token": 2.555,
+        "total_time": 2.556,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ORACLE: Forecast for Westside?",
+        "first_token": 2.516,
+        "total_time": 2.518,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "CHRONOS: 30% promo shock simulation",
+        "first_token": 2.517,
+        "total_time": 2.518,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "LOGISTICS: Inventory check for Midtown",
+        "first_token": 2.472,
+        "total_time": 2.474,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "EXPLAINER: What's driving Westside sales?",
+        "first_token": 2.565,
+        "total_time": 2.566,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "AUDITOR: How accurate is the Midtown model?",
+        "first_token": 2.545,
+        "total_time": 2.546,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "STABILIZER: Is Westside stable?",
+        "first_token": 2.507,
+        "total_time": 2.509,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "PROMOTER: Run a high intensity campaign",
+        "first_token": 19.015,
+        "total_time": 19.699,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ELASTICITY: Check price sensitivity",
+        "first_token": 2.539,
+        "total_time": 2.541,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "VOLATILITY: Check Midtown variance",
+        "first_token": 2.547,
+        "total_time": 2.55,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "MEMO: Remember that Westside is our priority",
+        "first_token": 2.564,
+        "total_time": 2.566,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "GEOGRAPHER: Details for Central Station",
+        "first_token": 2.662,
+        "total_time": 2.665,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ANOMALY: Any weird spikes today?",
+        "first_token": 2.704,
+        "total_time": 2.712,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "TREND: What is the long term growth?",
+        "first_token": 62.829,
+        "total_time": 62.861,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "SURVEYOR: Give me an executive briefing",
+        "first_token": 4.278,
+        "total_time": 5.268,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "hi",
+        "first_token": 16.411,
+        "total_time": 16.438,
+        "response": "None of the provided functions are suitable for a ...",
+        "status": "PASS"
+    },
+    {
+        "prompt": "RADAR: What are the top risks?",
+        "first_token": 3.985,
+        "total_time": 64.177,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ORACLE: Forecast for Westside?",
+        "first_token": 5.535,
+        "total_time": 13.086,
+        "response": "The forecast for Westside (store 1) is 495.7 units...",
+        "status": "PASS"
+    },
+    {
+        "prompt": "CHRONOS: 30% promo shock simulation",
+        "first_token": 8.482,
+        "total_time": 13.903,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "LOGISTICS: Inventory check for Midtown",
+        "first_token": 3.143,
+        "total_time": 3.157,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "EXPLAINER: What's driving Westside sales?",
+        "first_token": 3.024,
+        "total_time": 3.032,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "AUDITOR: How accurate is the Midtown model?",
+        "first_token": 4.571,
+        "total_time": 4.853,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "STABILIZER: Is Westside stable?",
+        "first_token": 5.156,
+        "total_time": 5.552,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "PROMOTER: Run a high intensity campaign",
+        "first_token": 2.853,
+        "total_time": 2.864,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ELASTICITY: Check price sensitivity",
+        "first_token": 4.4,
+        "total_time": 4.627,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "VOLATILITY: Check Midtown variance",
+        "first_token": 2.859,
+        "total_time": 2.863,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "MEMO: Remember that Westside is our priority",
+        "first_token": 6.648,
+        "total_time": 6.887,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "GEOGRAPHER: Details for Central Station",
+        "first_token": 2.917,
+        "total_time": 2.94,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ANOMALY: Any weird spikes today?",
+        "first_token": 3.118,
+        "total_time": 3.121,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "TREND: What is the long term growth?",
+        "first_token": 2.966,
+        "total_time": 3.0,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "SURVEYOR: Give me an executive briefing",
+        "first_token": 3.074,
+        "total_time": 3.08,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "hi",
+        "first_token": 5.728,
+        "total_time": 5.919,
+        "response": "I'm not able to provide a function call without a ...",
+        "status": "PASS"
+    },
+    {
+        "prompt": "RADAR: What are the top risks?",
+        "first_token": 4.946,
+        "total_time": 5.195,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ORACLE: Forecast for Westside?",
+        "first_token": 2.987,
+        "total_time": 3.031,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "CHRONOS: 30% promo shock simulation",
+        "first_token": 2.905,
+        "total_time": 2.907,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "LOGISTICS: Inventory check for Midtown",
+        "first_token": 2.843,
+        "total_time": 2.89,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "EXPLAINER: What's driving Westside sales?",
+        "first_token": 2.822,
+        "total_time": 2.838,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "AUDITOR: How accurate is the Midtown model?",
+        "first_token": 5.656,
+        "total_time": 5.869,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "STABILIZER: Is Westside stable?",
+        "first_token": 2.815,
+        "total_time": 2.829,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "PROMOTER: Run a high intensity campaign",
+        "first_token": 2.947,
+        "total_time": 2.957,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ELASTICITY: Check price sensitivity",
+        "first_token": 2.868,
+        "total_time": 2.901,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "VOLATILITY: Check Midtown variance",
+        "first_token": 2.891,
+        "total_time": 2.897,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "MEMO: Remember that Westside is our priority",
+        "first_token": 2.86,
+        "total_time": 2.876,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "GEOGRAPHER: Details for Central Station",
+        "first_token": 2.753,
+        "total_time": 2.758,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "ANOMALY: Any weird spikes today?",
+        "first_token": 2.997,
+        "total_time": 3.001,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "TREND: What is the long term growth?",
+        "first_token": 2.723,
+        "total_time": 2.741,
+        "response": "...",
+        "status": "FAIL"
+    },
+    {
+        "prompt": "SURVEYOR: Give me an executive briefing",
+        "first_token": 3.472,
+        "total_time": 3.482,
+        "response": "...",
+        "status": "FAIL"
+    }
+]

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from '../../core/api'
 import { useFiltersStore } from '../../store/filters'
-import { GlobalFilters } from '../../shared/GlobalFilters'
 import { Panel } from '../../shared/Panel'
 import { Skeleton } from '../../shared/Skeleton'
 import {
@@ -99,7 +98,6 @@ export function FeatureIntelligencePage() {
 
   return (
     <div className="space-y-6">
-      <GlobalFilters />
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Panel title="Global Feature Importance" right={<div className="text-xs text-slate-400">{globalResp?.status ?? '—'}</div>}>
@@ -216,3 +214,4 @@ export function FeatureIntelligencePage() {
     </div>
   )
 }
+

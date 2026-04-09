@@ -27,21 +27,34 @@ class ScenarioEngine:
 
         baseline_vals = np.array([p.predicted_sales for p in baseline.forecast], dtype=float)
 
-        # Deterministic adjustment model (no LLM):
-        # - macro shock applies multiplicatively to all points
-        # - promotion intensity lifts demand (simple linear)
-        # - price elasticity is a penalty on promotion proxy (kept deterministic)
-        # - growth_slope applies a linear ramp across horizon
+        # ── Deterministic multi-factor adjustment model ────────────────────────
+        # 1. Macro demand shock: broad multiplicative shift
         macro = 1.0 + (adj.macro_demand_shock_pct / 100.0)
-        promo_lift = 1.0 + 0.15 * float(adj.promotion_intensity)
+
+        # 2. Promotion: lifts demand non-linearly (diminishing returns)
+        promo_lift = 1.0 + 0.18 * float(adj.promotion_intensity) * (1.0 - 0.3 * float(adj.promotion_intensity))
+
+        # 3. Price elasticity: penalizes demand when promotion drives price change
         price_penalty = 1.0 - 0.05 * float(adj.price_elasticity) * float(adj.promotion_intensity)
-        competitive = 1.0 - 0.10 * float(getattr(adj, "competitive_pressure", 0.0))
+
+        # 4. Competitive pressure: reduces demand
+        competitive = 1.0 - 0.12 * float(getattr(adj, "competitive_pressure", 0.0))
+
+        # 5. Marketing spend: boosts demand independent of promotion
+        marketing = 1.0 + 0.20 * float(getattr(adj, "marketing_spend", 0.0))
+
+        # 6. Weather impact: additive seasonal modulator
+        weather = 1.0 + 0.08 * float(getattr(adj, "weather_impact", 0.0))
+
+        # 7. Growth slope: linear ramp across the forecast horizon
         ramp = np.linspace(0.0, 1.0, num=len(baseline_vals), dtype=float)
         growth = 1.0 + float(adj.growth_slope) * ramp
 
-        scenario_vals = baseline_vals * macro * promo_lift * price_penalty * competitive * growth
+        # Combined multiplier
+        scenario_vals = baseline_vals * macro * promo_lift * price_penalty * competitive * marketing * weather * growth
         scenario_vals = np.maximum(scenario_vals, 0.0)
 
+        # Optional demand cap
         demand_cap = getattr(adj, "demand_cap", None)
         if demand_cap is not None:
             scenario_vals = np.minimum(scenario_vals, float(demand_cap))
@@ -72,7 +85,7 @@ class ScenarioEngine:
             "delta_total_pct": ie.explain("forecast_delta_pct", float(delta_total_pct or 0.0), ctx),
             "price_elasticity": MetricExplanation(
                 title="Price Elasticity",
-                definition="Scenario control representing demand sensitivity to price change proxy.",
+                definition="Demand sensitivity to price change proxy.",
                 calculation_logic="Applied as a deterministic penalty interacting with promotion intensity.",
                 business_meaning="Higher elasticity reduces uplift under promotion assumptions.",
                 current_interpretation=f"elasticity={req.adjustments.price_elasticity:.2f}",

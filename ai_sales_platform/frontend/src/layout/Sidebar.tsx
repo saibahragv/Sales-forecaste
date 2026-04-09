@@ -11,22 +11,18 @@ import {
   ChartPieIcon,
   WrenchScrewdriverIcon,
   ChatBubbleLeftRightIcon,
+  ArchiveBoxIcon,
 } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
+import { StoreItemSelector } from '../shared/StoreItemSelector'
 
 const nav = [
-  { to: '/overview', label: 'Executive Overview', icon: PresentationChartLineIcon },
+  { to: '/overview', label: 'Executive Pulse', icon: PresentationChartLineIcon },
   { to: '/forecast', label: 'Forecast Explorer', icon: ChartBarIcon },
-  { to: '/scenario', label: 'Scenario Simulation Lab', icon: BeakerIcon },
-  { to: '/risk', label: 'Risk & Stability', icon: ExclamationTriangleIcon },
-  { to: '/feature-intelligence', label: 'Feature Intelligence', icon: CircleStackIcon },
-  { to: '/hierarchy', label: 'Hierarchical Intelligence', icon: Squares2X2Icon },
-  { to: '/seasonal-trend', label: 'Seasonal & Trend Lab', icon: ChartPieIcon },
-  { to: '/governance', label: 'Governance & Monitoring', icon: ShieldCheckIcon },
-  { to: '/data-engineering', label: 'Data Engineering Console', icon: WrenchScrewdriverIcon },
-  { to: '/assistant', label: 'AI Assistant', icon: ChatBubbleLeftRightIcon },
+  { to: '/scenario', label: 'Scenario Simulator', icon: BeakerIcon },
+  { to: '/hierarchy', label: 'Global AI Network', icon: Squares2X2Icon },
 ]
 
 export function Sidebar() {
@@ -86,8 +82,9 @@ export function Sidebar() {
       </nav>
 
       {!collapsed && (
-        <div className="px-6 py-6 text-xs text-fg-muted border-t border-border-light mt-auto">
-          Connected to WebSocket
+        <div className="px-4 py-4 border-t border-border-light mt-auto space-y-2">
+          <StoreItemSelector />
+          <div className="text-xs text-fg-muted opacity-40 text-center pt-1">AI Sales Intelligence Platform</div>
         </div>
       )}
     </motion.aside>

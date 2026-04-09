@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { api } from '../../core/api'
 import { useFiltersStore } from '../../store/filters'
-import { GlobalFilters } from '../../shared/GlobalFilters'
+import { usePageContext } from '../../store/pageContext'
 import { KpiCard } from '../../shared/KpiCard'
 import { Panel } from '../../shared/Panel'
 import { Skeleton } from '../../shared/Skeleton'
@@ -42,6 +42,7 @@ const AnimatedCounter = ({ value }: { value: number | string | undefined }) => {
 
 export function ExecutiveOverviewPage() {
   const { store, item, horizonDays, anchorDate } = useFiltersStore()
+  const { updatePageData } = usePageContext()
   const [resp, setResp] = useState<OverviewResponse | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -69,7 +70,15 @@ export function ExecutiveOverviewPage() {
           anchor_date: anchorDate,
         },
       })
-      .then((r) => setResp(r.data))
+      .then((r) => {
+        setResp(r.data)
+        updatePageData({
+          forecastTotal: r.data.forecast_total.toFixed(0),
+          demandHealthBand: r.data.demand_health.band,
+          trendDirection: r.data.trend.direction,
+          volatility: r.data.kpis.find(k => k.label === 'Volatility')?.value?.toFixed(3),
+        })
+      })
       .catch((e) => setError(e?.response?.data?.detail ?? e?.message ?? 'Overview failed'))
       .finally(() => setLoading(false))
   }, [store, item, horizonDays, anchorDate])
@@ -92,7 +101,7 @@ export function ExecutiveOverviewPage() {
          className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-glow blur-[100px] rounded-full opacity-20 pointer-events-none -z-10" 
       />
 
-      <GlobalFilters />
+
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 z-10 relative">
         <KpiCard

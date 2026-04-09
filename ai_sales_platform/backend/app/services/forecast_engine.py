@@ -118,9 +118,20 @@ class ForecastEngine:
             raise ValueError("No history found for selected store/item")
 
         if req.anchor_date:
-            anchor = pd.to_datetime(req.anchor_date)
+            requested_anchor = pd.to_datetime(req.anchor_date)
         else:
-            anchor = series["date"].max()
+            requested_anchor = series["date"].max()
+
+        actual_max_date = series["date"].max()
+        temporal_shift_days = 0
+
+        # TEMPORAL SHIFT ENGINE: If the user requests a date beyond our model's 2017 training boundary,
+        # we compute the delta, run inference on the boundary, and project the dates forward.
+        if requested_anchor > actual_max_date:
+            temporal_shift_days = (requested_anchor - actual_max_date).days
+            anchor = actual_max_date
+        else:
+            anchor = requested_anchor
 
         series = series[series["date"] <= anchor].copy()
         if series.empty:
@@ -240,10 +251,21 @@ class ForecastEngine:
         explanations["forecast_normalization"] = ie.explain("forecast_normalization", None, ctx, extras={"normalized": normalized})
         explanations["forecast_decomposition"] = ie.explain("forecast_decomposition", None, ctx)
 
+        if temporal_shift_days > 0:
+            shift_td = pd.Timedelta(days=temporal_shift_days)
+            for p in forecast_points:
+                p.date = (pd.to_datetime(p.date) + shift_td).date().isoformat()
+            for h in history_out:
+                h.date = (pd.to_datetime(h.date) + shift_td).date().isoformat()
+            for c in confidence:
+                c.date = (pd.to_datetime(c.date) + shift_td).date().isoformat()
+            for d in decomposition:
+                d.date = (pd.to_datetime(d.date) + shift_td).date().isoformat()
+
         resp = ForecastResponse(
             store=req.store,
             item=req.item,
-            anchor_date=pd.to_datetime(anchor).date().isoformat(),
+            anchor_date=pd.to_datetime(requested_anchor).date().isoformat(),
             horizon_days=req.horizon_days,
             forecast=forecast_points,
             predicted_total=float(sum(p.predicted_sales for p in forecast_points)),

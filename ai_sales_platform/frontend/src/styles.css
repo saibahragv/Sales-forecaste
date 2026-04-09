@@ -51,6 +51,7 @@ body {
   color: var(--fg-primary);
   font-family: var(--font-sys);
   overflow-x: hidden;
+  color-scheme: dark;
   /* Premium radial gradient background */
   background-image: radial-gradient(circle at 50% 0%, hsla(210, 40%, 15%, 0.5) 0%, transparent 60%);
 }
@@ -161,7 +162,7 @@ body {
 /* Layout Utilities (replacing pure tailwind where advanced control is needed) */
 .split-pane {
   display: flex;
-  height: 100%;
+  min-height: 100vh;
 }
 .split-pane-left {
   flex: 0 0 280px;
